@@ -4,6 +4,8 @@ const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 
+const port = process.env.PORT || 1001;
+
 const app = express();
 
 //db config
@@ -15,13 +17,11 @@ mongoose
   .then(() => console.log(`mongodb connected`))
   .catch(err => console.log(err));
 
+app.get("/", (req, res) => res.send("Hello"));
+
 //use Routes
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
-
-const port = process.env.PORT || 1001;
-
-app.get("/", (req, res) => res.send("Hello"));
 
 app.listen(port, () => console.log(`Server on running ${port}`));
