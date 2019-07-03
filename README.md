@@ -23,4 +23,4 @@ Destructuring
 5:20min - Extensions (ES6 React/Redux/GraphQL)
 8:00 - prettier - format on save
 
-RESTART - 008 Route Files - 5:00min
+RESTART - 010 User Registration
