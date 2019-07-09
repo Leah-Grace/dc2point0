@@ -9,7 +9,7 @@ const port = process.env.PORT || 1001;
 
 const app = express();
 
-//middleware
+//Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
