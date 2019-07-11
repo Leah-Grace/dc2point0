@@ -47,3 +47,10 @@ Devconnector 2.0
 - Mongoose / MongoDB / Atlas
 - Bcrypt Password Hashing
 - Heroku and Git Deployment
+
+Routes (by resource, each return json)
+
+- Users
+- Auth
+- Profile
+- Post
