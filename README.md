@@ -36,16 +36,16 @@ RESTART - 010 User Registration
 Devconnector 2.0
 
 - VSCode Extensions (Prettier, bracket pair colorizer, ES7 React/Redux/GraphQL/...)
-- Custom Middlewear!
+- Custom Middlewear (body-parsing)
 - ES6 Syntax (destructuring, promises)
 - Async / Await
-- React Hooks
+- React Hooks (no class)
 - React/Redux for state mgmt (alert reducer)
 - Redux with DevTools
 - JWT (JSON Web Tokens)
 - Postman HTTP Client
 - Mongoose / MongoDB / Atlas
-- Bcrypt Password Hashing
+- Bcrypt for Password Hashing
 - Heroku and Git Deployment
 
 Routes (by resource, each return json)
