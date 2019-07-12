@@ -11,9 +11,11 @@ const port = process.env.PORT || 1001;
 
 const app = express();
 
+/* BODY-PARSER IS NOLONGER NECESSARY
 //Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+*/
 
 //database connection
 connectDB();
@@ -28,6 +30,9 @@ mongoose
   .then(() => console.log(`mongodb connected`))
   .catch((err) => console.log(err));
   */
+
+//init middlewear
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('Hello'));
 
