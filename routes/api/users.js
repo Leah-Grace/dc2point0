@@ -5,6 +5,7 @@ const User = require('../../models/user');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 //@route    POST api/users
 //@desc     Register user
@@ -57,40 +58,26 @@ router.post(
       user.passowrd = await bcrypt.hash(password, salt);
 
       await user.save();
-      //return jsonwebtoken
-
-      res.send('User registered');
+      //return jsonwebtoken, start with creating payload
+      const payload = {
+        user: {
+          id: user.id
+        }
+      };
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 3600000 }, //change before deployment to 3600
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (err) {
       console.error(err.message);
       res.status(500).send(`Server error`);
     }
   }
 );
-
-// ORIGINAL REGISTATION ROUTE
-/*
-//@route GET api/users/register
-//@desc register users route
-//@access Public
-router.post('/register', (req, res) => {
-  User.findOne({ email: req.body.email }).then((user) => {
-    if (user) {
-      return res.status(400).json({ email: 'Email already exists' });
-    } else {
-      const avatar = gravatar.url(req.body.email, {
-        s: '200', //size
-        r: 'pg', //rating
-        d: 'mm' //default instead of 404 (file not found errorr)
-      });
-      const newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        avatar,
-        password: req.body.password
-      });
-    }
-  });
-});
-*/
 
 module.exports = router;
